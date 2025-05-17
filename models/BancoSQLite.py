@@ -39,6 +39,8 @@ def inicializar_banco():
                     CREATE TABLE IF NOT EXISTS SALAS (
                     ID_SALA INTEGER PRIMARY KEY AUTOINCREMENT,
                     AGENDADAS BOOLEAN NOT NULL DEFAULT 0,
+                    id_turma INTEGER,
+                    nome_turma TEXT,
                     id_professor INTEGER,
                     nome_professor TEXT, 
                     id_aluno INTEGER,
