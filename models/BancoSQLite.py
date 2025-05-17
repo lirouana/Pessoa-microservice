@@ -8,6 +8,9 @@ def inicializar_banco():
     conexao = sqlite3.connect(bd)
     conexao.execute("PRAGMA foreign_keys = ON")
     cursor = conexao.cursor() 
+    print("Conexão com o banco de dados estabelecida.")
+   
+    # Criação das tabelas
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS professores (
             id_professor INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -31,6 +34,20 @@ def inicializar_banco():
             publica BOOLEAN NOT NULL
         )
     ''')
+    
+    cursor.execute('''
+                    CREATE TABLE IF NOT EXISTS SALAS (
+                    ID_SALA INTEGER PRIMARY KEY AUTOINCREMENT,
+                    AGENDADAS BOOLEAN NOT NULL DEFAULT 0,
+                    id_professor INTEGER,
+                    nome_professor TEXT, 
+                    id_aluno INTEGER,
+                    nome_aluno TEXT,
+                    id_atividade INTEGER,
+                    nome_atividade TEXT
+                   )
+                   ''') 
+    print("Tabelas criadas com sucesso!")
  
     conexao.commit()
     conexao.close()
